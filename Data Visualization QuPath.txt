@@ -1,0 +1,23 @@
+data <- data.frame(
+Group = rep(c("Healthy Control", "Patient"), each = 8),
+Value = c(
+0.467, 0.584, 0.632, 0.718, 0.543, 0.684, 0.466, 0.589,
+0.783, 0.856, 0.681, 0.978, 0.847, 0.764, 0.638, 0.859
+)
+)
+library(ggplot2)
+ggplot(data, aes(x = Group, y = Value, color = Group)) +
+geom_jitter(width = 0.15, size = 3, alpha = 0.8) +
+stat_summary(
+fun = median,
+geom = "crossbar",
+width = 0.4,
+color = "black"
+) +
+guides(color = "none") +
+theme_classic() +
+labs(
+title = "CD68 Macrophages in Decidua Tissue",
+x = "Samples",
+y = "Cells per Total Number of Cells"
+)
